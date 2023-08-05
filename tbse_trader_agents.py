@@ -1419,11 +1419,11 @@ class Trader_PRZI(Trader):
     def getorder(self,time,p_eq ,q_eq, demand_curve,supply_curve,countdown,lob):
 
         # shvr_price tells us what price a SHVR would quote in these circs
-        def shvr_price(otype, limit, lob):
+         def shvr_price(otype, limit, lob):
 
             if otype == 'Bid':
                 if lob['bids']['n'] > 0:
-                    shvr_p = lob['bids']['best'] + TICK_SIZE  # BSE ticksize is global var
+                    shvr_p = lob['bids']['best'] + TICK_SIZE   # BSE ticksize is global var
                     if shvr_p > limit:
                         shvr_p = limit
                 else:
@@ -1441,7 +1441,7 @@ class Trader_PRZI(Trader):
 
 
         # calculate cumulative distribution function (CDF) look-up table (LUT)
-        def calc_cdf_lut(strat, t0, m, dirn, pmin, pmax):
+         def calc_cdf_lut(strat, t0, m, dirn, pmin, pmax):
             # set parameter values and calculate CDF LUT
             # strat is strategy-value in [-1,+1]
             # t0 and m are constants used in the threshold function
@@ -1543,15 +1543,15 @@ class Trader_PRZI(Trader):
 
             return {'strat':strat, 'dirn':dirn, 'pmin':pmin, 'pmax':pmax, 'cdf_lut':cdf}
 
-        verbose = False
+         verbose = False
 
-        if verbose:
+         if verbose:
             print('t=%.1f PRSH getorder: %s, %s' % (time, self.tid, self.strat_str()))
 
-        if len(self.orders) < 1:
+         if len(self.orders) < 1:
             # no orders: return NULL
             order = None
-        else:
+         else:
             # unpack the assignment-order
             limit = self.orders[0].price
             otype = self.orders[0].otype
@@ -1666,7 +1666,7 @@ class Trader_PRZI(Trader):
 
             self.lastquote = order
 
-        return order
+         return order
 
 
     def bookkeep(self, trade, order, verbose, time):

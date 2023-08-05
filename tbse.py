@@ -178,7 +178,7 @@ def populate_market(trader_spec, traders, shuffle, verbose):
 
         return parameters
     
-    landscape_mapping = True   # set to true when mapping fitness landscape (for PRSH etc).
+    landscape_mapping = False   # set to true when mapping fitness landscape (for PRSH etc).
 
 
     n_buyers = 0
@@ -707,7 +707,9 @@ if __name__ == "__main__":
 
         order_sched = get_order_schedule()
 
-        buyers_spec = [('PRZI', NUM_PRZI), ('PRSH', NUM_PRSH),('PRDE', NUM_PRDE),
+        buyers_spec = [('PRZI', NUM_PRZI,{'k': 1, 's_min': -1.0, 's_max': +1.0}), 
+                       ('PRSH', NUM_PRSH,{'k': 4, 's_min': -1.0, 's_max': +1.0}),
+                       ('PRDE', NUM_PRDE,{'k': 4, 's_min': -1.0, 's_max': +1.0}),
                        ('ZIC', NUM_ZIC), ('ZIP', NUM_ZIP),
                        ('GDX', NUM_GDX), ('AA', NUM_AA),
                        ('GVWY', NUM_GVWY), ('SHVR', NUM_SHVR)]
